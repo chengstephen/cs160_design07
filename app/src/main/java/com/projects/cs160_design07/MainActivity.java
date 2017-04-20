@@ -56,9 +56,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
+        if (id == R.id.call_emergency) {
+            //Popup to call emergency
+            EmergencyDialog eDialog = new EmergencyDialog(this);
+            eDialog.show();
+        }
 
         return super.onOptionsItemSelected(item);
     }
