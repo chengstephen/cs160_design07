@@ -1,5 +1,7 @@
 package com.projects.cs160_design07;
 
+// Homepage screen!  This activity will run our news feed and act as our app's homepage.
+
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
