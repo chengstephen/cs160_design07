@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/call_emergency"
+        android:title="@string/call_emergency"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="always"/>
+    <item android:id="@+id/about"
+        android:title="@string/menu_about"/>
+    <item android:id="@+id/emergency_contacts"
+        android:title="@string/menu_emergency_contacts"/>
+    <item android:id="@+id/settings"
+        android:title="@string/menu_settings"/>
+</menu>

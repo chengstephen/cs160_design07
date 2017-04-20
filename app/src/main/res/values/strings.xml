@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">cs160_design07</string>
-    <string name="homepage_button">Home</string>
-    <string name="patients_button">Patients</string>
-    <string name="inventory_button">Inventory</string>
+    <string name="app_name">Patient Care</string>
+    <string name="call_emergency">Call 911</string>
+    <string name="menu_about">About</string>
+    <string name="menu_emergency_contacts">Emergency Contacts</string>
+    <string name="menu_settings">Settings</string>
 </resources>
