@@ -6,8 +6,12 @@ package com.projects.cs160_design07;
 
 public class EmergencyRequest extends Request {
 
-    public EmergencyRequest(String message) {
-        super(message, 0);
+    public EmergencyRequest() {
+        super();
+    }
+
+    public EmergencyRequest(String message, String name) {
+        super(message, name, "0 minutes");
     }
 
 }
