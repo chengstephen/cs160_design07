@@ -6,17 +6,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
 import java.util.List;
 
 /**
  * Created by cstep on 4/19/2017.
  */
 
-public class FeedListAdapter extends ArrayAdapter<Request> {
+public class PatientListAdapter extends ArrayAdapter<Request> {
 
     List<Request> requests;
 
-    public FeedListAdapter(Context context, int resource, List<Request> requests) {
+    public PatientListAdapter(Context context, int resource, List<Request> requests) {
         super(context, resource, requests);
         this.requests = requests;
     }
