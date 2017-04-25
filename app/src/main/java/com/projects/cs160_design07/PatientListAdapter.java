@@ -1,10 +1,12 @@
 package com.projects.cs160_design07;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -13,30 +15,33 @@ import java.util.List;
  * Created by cstep on 4/19/2017.
  */
 
-public class PatientListAdapter extends ArrayAdapter<Request> {
+public class PatientListAdapter extends ArrayAdapter<String> {
 
-    List<Request> requests;
-
-    public PatientListAdapter(Context context, int resource, List<Request> requests) {
-        super(context, resource, requests);
-        this.requests = requests;
+    public PatientListAdapter(Context context, String[] patients) {
+        super(context, R.layout.custom_row, patients);
     }
-    
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.request_layout, parent, false);
-        }
-        TextView requestName = (TextView) convertView.findViewById(R.id.request_name);
-        TextView requestMessage = (TextView) convertView.findViewById(R.id.request_description);
-        TextView requestCurrentTime = (TextView) convertView.findViewById(R.id.request_current_time);
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        View customView = inflater.inflate(R.layout.custom_row, parent, false);
 
-        requestName.setText(requests.get(position).getName());
-        requestMessage.setText(requests.get(position).getMessage());
-        requestCurrentTime.setText(requests.get(position).getRequestTime().toString());
+        String patientItem = getItem(position);
+        TextView textView = (TextView) customView.findViewById(R.id.textView);
+        ImageView imageView = (ImageView) customView.findViewById(R.id.imageView);
 
-        return convertView;
+        textView.setText(patientItem);
+        imageView.setImageResource(R.drawable.grandmother);
+
+        // for patient profile
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),PatientProfileActivity.class);
+                getContext().startActivity(intent);
+            }
+        });
+
+        return customView;
     }
-
 }

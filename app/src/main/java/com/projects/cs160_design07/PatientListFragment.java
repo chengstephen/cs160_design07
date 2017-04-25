@@ -15,32 +15,16 @@ import java.util.ArrayList;
 
 public class PatientListFragment extends Fragment{
 
+    private View rootView;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.patientlist_fragment_layout, parent, false);
-        ArrayList<Request> mockRequests = getMockRequests();
-        ListView listView = (ListView) rootView.findViewById(R.id.patient_list_view);
-        listView.setAdapter(new FeedListAdapter(getActivity(), R.layout.request_layout, mockRequests));
+        if(rootView == null) {
+            rootView = inflater.inflate(R.layout.patientlist_fragment_layout, parent, false);
+            String[] patients = {"Patient 1", "Patient 2", "Patient 3", "Patient 4", "Patient 5", "Patient 6"};
+            PatientListAdapter adapter = new PatientListAdapter(getContext(), patients);
+            ListView listView = (ListView) rootView.findViewById(R.id.patient_list_view);
+            listView.setAdapter(adapter);
+        }
         return rootView;
-    }
-    private ArrayList<Request> getMockRequests() {
-        ArrayList<Request> mockRequests = new ArrayList<>();
-
-        Request request = new Request();
-
-        request.setName("John Doe");
-        request.setMessage("I'm hungry!");
-        mockRequests.add(request);
-
-        request = new Request();
-        request.setName("Mary Jones");
-        request.setMessage("Need to take my medicine.");
-        mockRequests.add(request);
-
-        request = new EmergencyRequest();
-        request.setName("Mary Jones");
-        request.setMessage("Help!!");
-        mockRequests.add(request);
-
-        return mockRequests;
     }
 }

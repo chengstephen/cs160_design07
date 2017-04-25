@@ -20,14 +20,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        String[] patients = {"Patient 1", "Patient 2", "Patient 3", "Patient 4", "Patient 5", "Patient 6"};
-        // Replace the Array adapter with your custom adapter.
-        // ListAdapter theListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, patients);
-//        ListAdapter customListAdapter = new CustomAdapter(this,patients);
-//        ListView customListView = (ListView) findViewById(R.id.customListView);
-//        customListView.setAdapter(customListAdapter);
-
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -45,14 +37,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 1) {
-                    Intent intent = new Intent(getApplicationContext(),ListViewAndroidExample.class);
-                    startActivity(intent);
-
-                } else {
-                    viewPager.setCurrentItem(tab.getPosition());
-                }
-
+                viewPager.setCurrentItem(tab.getPosition());
             }
 
             @Override
