@@ -34,12 +34,22 @@ public class InventoryItem extends AppCompatActivity {
         this.name = name;
     }
 
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
     public String getName() {
         return name;
     }
 
     public String getNumUnits() {
-        return numLeft.toString() + " " + unit;
+        String ending;
+        if (numLeft == 1) {
+            ending = unit;
+        } else {
+            ending = unit + "s";
+        }
+        return numLeft.toString() + " " + ending;
     }
 
     public Date getLastUpdateTime() {

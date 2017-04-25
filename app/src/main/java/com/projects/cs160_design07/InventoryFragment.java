@@ -26,6 +26,25 @@ public class InventoryFragment extends Fragment {
 
     private ArrayList<InventoryItem> getMockInventory() {
         ArrayList<InventoryItem> items = new ArrayList<>();
+
+        InventoryItem item = new InventoryItem();
+        item.setName("Tylenol");
+        item.setNum(30);
+        item.setUnit("pill");
+        items.add(item);
+
+        item = new InventoryItem("Daipers", 16, "unit");
+        items.add(item);
+
+        item = new InventoryItem("Bandaids", 211, "bandage");
+        items.add(item);
+
+        item = new InventoryItem("Oxygen Tanks", 24, "can");
+        items.add(item);
+
+        item = new InventoryItem("Ensure", 2, "bottle");
+        items.add(item);
+
         return items;
     }
 
