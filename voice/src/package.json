@@ -1,0 +1,17 @@
+{
+  "name": "recipe_assistant",
+  "version": "1.0.0",
+  "description": "Make your favorite recipes",
+  "main": "index.js",
+  "keywords": [
+    "alexa",
+    "skill",
+    "recipe"
+  ],
+  "author": "Andrew Dildy",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "alexa-sdk": "^1.0.7",
+    "dynamodb-doc": "^1.0.0"
+  }
+}
