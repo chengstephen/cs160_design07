@@ -2,6 +2,8 @@ package com.projects.cs160_design07;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,7 +39,9 @@ public class EmergencyDialog extends Dialog implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_call:
-                dismiss();
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:911"));
+                getContext().startActivity(intent);
                 break;
             case R.id.btn_dont_call:
                 dismiss();

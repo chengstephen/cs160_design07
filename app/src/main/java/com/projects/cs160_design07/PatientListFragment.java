@@ -29,13 +29,11 @@ public class PatientListFragment extends Fragment{
 
         request.setName("John Doe");
         request.setMessage("I'm hungry!");
-        request.setTime("15 minutes");
         mockRequests.add(request);
 
         request = new Request();
         request.setName("Mary Jones");
         request.setMessage("Need to take my medicine.");
-        request.setTime("1 hour");
         mockRequests.add(request);
 
         request = new EmergencyRequest();

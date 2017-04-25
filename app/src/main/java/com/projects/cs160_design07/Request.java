@@ -11,20 +11,18 @@ import java.util.Date;
 
 public class Request extends AppCompatActivity {
 
-    private String name, message, time;
+    private String name, message;
     private Date currentTime;
 
     public Request() {
         this.name = "";
         this.message = "";
-        this.time = "";
         this.currentTime = Calendar.getInstance().getTime();
     }
 
-    public Request(String name, String message, String time) {
+    public Request(String name, String message) {
         this.name = name;
         this.message = message;
-        this.time = time;
         this.currentTime = Calendar.getInstance().getTime();
     }
 
@@ -36,20 +34,12 @@ public class Request extends AppCompatActivity {
         this.message = message;
     }
 
-    public void setTime(String time) {
-        this.time = time;
-    }
-
     public String getName() {
         return name;
     }
 
     public String getMessage() {
         return message;
-    }
-
-    public String getTime() {
-        return time;
     }
 
     public Date getRequestTime() {

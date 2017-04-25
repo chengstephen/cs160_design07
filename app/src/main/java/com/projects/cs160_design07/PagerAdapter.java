@@ -11,6 +11,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 public class PagerAdapter extends FragmentStatePagerAdapter{
 
     int mNumOfTabs;
+    FeedFragment tab1;
+    PatientListFragment tab2;
+    InventoryFragment tab3;
 
     public PagerAdapter(FragmentManager fm, int NumOfTabs) {
         super(fm);
@@ -22,13 +25,19 @@ public class PagerAdapter extends FragmentStatePagerAdapter{
 
         switch (position) {
             case 0:
-                FeedFragment tab1 = new FeedFragment();
+                if(tab1 == null) {
+                    tab1 = new FeedFragment();
+                }
                 return tab1;
             case 1:
-                PatientListFragment tab2 = new PatientListFragment();
+                if(tab2 == null) {
+                    tab2 = new PatientListFragment();
+                }
                 return tab2;
             case 2:
-                InventoryFragment tab3 = new InventoryFragment();
+                if(tab3 == null) {
+                    tab3 = new InventoryFragment();
+                }
                 return tab3;
             default:
                 return null;

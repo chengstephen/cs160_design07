@@ -30,12 +30,10 @@ public class PatientListAdapter extends ArrayAdapter<Request> {
         TextView requestName = (TextView) convertView.findViewById(R.id.request_name);
         TextView requestMessage = (TextView) convertView.findViewById(R.id.request_description);
         TextView requestCurrentTime = (TextView) convertView.findViewById(R.id.request_current_time);
-        TextView requestTime = (TextView) convertView.findViewById(R.id.request_time);
 
         requestName.setText(requests.get(position).getName());
         requestMessage.setText(requests.get(position).getMessage());
         requestCurrentTime.setText(requests.get(position).getRequestTime().toString());
-        requestTime.setText(requests.get(position).getTime());
 
         return convertView;
     }

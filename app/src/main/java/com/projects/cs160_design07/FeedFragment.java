@@ -15,12 +15,20 @@ import java.util.ArrayList;
 
 public class FeedFragment extends Fragment {
 
+    private ListView listView;
+    private FeedListAdapter listAdapter;
+    private ArrayList<Request> mockRequests;
+    private View rootView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.feed_fragment_layout, parent, false);
-        ArrayList<Request> mockRequests = getMockRequests();
-        ListView listView = (ListView) rootView.findViewById(R.id.feed_list_view);
-        listView.setAdapter(new FeedListAdapter(getActivity(), R.layout.request_layout, mockRequests));
+        if(rootView == null) {
+            rootView = inflater.inflate(R.layout.feed_fragment_layout, parent, false);
+            mockRequests = getMockRequests();
+            listView = (ListView) rootView.findViewById(R.id.feed_list_view);
+            listAdapter = new FeedListAdapter(getActivity(), R.layout.request_layout, mockRequests);
+            listView.setAdapter(listAdapter);
+        }
         return rootView;
     }
 
@@ -31,13 +39,11 @@ public class FeedFragment extends Fragment {
 
         request.setName("John Doe");
         request.setMessage("I'm hungry!");
-        request.setTime("15 minutes");
         mockRequests.add(request);
 
         request = new Request();
         request.setName("Mary Jones");
         request.setMessage("Need to take my medicine.");
-        request.setTime("1 hour");
         mockRequests.add(request);
 
         request = new EmergencyRequest();
@@ -46,6 +52,10 @@ public class FeedFragment extends Fragment {
         mockRequests.add(request);
 
         return mockRequests;
+    }
+
+    public void addRequest(Request request) {
+        listAdapter.add(request);
     }
 
 }

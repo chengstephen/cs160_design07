@@ -11,7 +11,7 @@ public class EmergencyRequest extends Request {
     }
 
     public EmergencyRequest(String message, String name) {
-        super(message, name, "0 minutes");
+        super(message, name);
     }
 
 }
