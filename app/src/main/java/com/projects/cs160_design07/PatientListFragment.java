@@ -19,7 +19,7 @@ public class PatientListFragment extends Fragment{
 
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         if(rootView == null) {
-            rootView = inflater.inflate(R.layout.patientlist_fragment_layout, parent, false);
+            rootView = inflater.inflate(R.layout.patient_list, parent, false);
             String[] patients = {"Patient 1", "Patient 2", "Patient 3", "Patient 4", "Patient 5", "Patient 6"};
             PatientListAdapter adapter = new PatientListAdapter(getContext(), patients);
             ListView listView = (ListView) rootView.findViewById(R.id.patient_list_view);
