@@ -2,6 +2,7 @@ package com.projects.cs160_design07;
 
 // Homepage screen!  This activity will run our news feed and act as our app's homepage.
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +19,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        String[] patients = {"Patient 1", "Patient 2", "Patient 3", "Patient 4", "Patient 5", "Patient 6"};
+        // Replace the Array adapter with your custom adapter.
+        // ListAdapter theListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, patients);
+//        ListAdapter customListAdapter = new CustomAdapter(this,patients);
+//        ListView customListView = (ListView) findViewById(R.id.customListView);
+//        customListView.setAdapter(customListAdapter);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -34,7 +45,14 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
+                if (tab.getPosition() == 1) {
+                    Intent intent = new Intent(getApplicationContext(),ListViewAndroidExample.class);
+                    startActivity(intent);
+
+                } else {
+                    viewPager.setCurrentItem(tab.getPosition());
+                }
+
             }
 
             @Override
