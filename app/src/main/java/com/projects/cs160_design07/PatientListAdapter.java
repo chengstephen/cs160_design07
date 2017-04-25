@@ -21,6 +21,7 @@ public class PatientListAdapter extends ArrayAdapter<Request> {
         super(context, resource, requests);
         this.requests = requests;
     }
+    
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
