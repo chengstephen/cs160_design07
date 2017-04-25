@@ -1,0 +1,25 @@
+NewRequestIntent i need {help using the bathroom|Request}
+NewRequestIntent i need {more water|Request}
+NewRequestIntent can you {help me use the bathroom|Request}
+NewRequestIntent can you {get me more water|Request}
+NewRequestIntent {help me use the bathroom|Request}
+NewRequestIntent {get me more water|Request}
+
+MainMenuIntent main menu
+MainMenuIntent menu
+
+UrgentIntent
+
+ScheduleIntent
+
+RequestIntent
+
+HelpIntent
+
+EmergencyIntent
+
+NextIntent
+
+PreviousIntent
+
+StartOverIntent

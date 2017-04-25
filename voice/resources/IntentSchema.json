@@ -1,0 +1,13 @@
+{"intents": [
+  {"intent": "NewRequestIntent", "slots": [{"name" : "Request", "type": "AMAZON.LITERAL"}]},
+  {"intent": "MainMenuIntent"},
+  {"intent": "UrgentIntent"},
+  {"intent": "ScheduleIntent"},
+  {"intent": "RequestIntent"},
+  {"intent": "HelpIntent"},
+  {"intent": "EmergencyIntent"},
+  {"intent": "NextIntent"},
+  {"intent": "PreviousIntent"},
+  {"intent": "StartOverIntent"}
+]
+}
