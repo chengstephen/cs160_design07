@@ -22,7 +22,7 @@ public class ListViewAndroidExample extends ListActivity {
         setContentView(R.layout.activity_list_view_android_example);
 
 
-        content = (TextView)findViewById(R.id.output);
+       ///// content = (TextView)findViewById(R.id.output);
 
         //listView = (ListView) findViewById(R.id.list);
         String[] patients = {"Patient 1", "Patient 2", "Patient 3", "Patient 4", "Patient 5", "Patient 6"};
@@ -31,8 +31,7 @@ public class ListViewAndroidExample extends ListActivity {
         // Second parameter - Layout for the row
         // Third - the Array of data
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, patients);
+        CustomAdapter adapter = new CustomAdapter(this, patients);
 
 
         // Assign adapter to List
