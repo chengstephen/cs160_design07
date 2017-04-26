@@ -19,6 +19,7 @@ var languageString = {
             'WELCOME': "nurse assistant here, i can help with urgent problems, scheduling, or inventory requests. ",
             'NEED_HELP': "what can i help you with today?",
             'MAIN_HELP': "to get help, you can say 'urgent problem', 'scheduling', or 'special request'",
+            '911': "emergency care is on the way, please remain calm",
 
             'URGENT_PROMPT': "okay, what is your problem?.",
             'READ_REQUEST': "okay, your request is, '%s'. the nurse will be here shortly",
@@ -82,6 +83,11 @@ var newSessionHandlers = {
         this.handler.state = STATES.MAIN;
         this.emitWithState('InventoryIntent');
     },
+
+    '911Intent': function () {
+        this.handler.state = STATES.MAIN;
+        this.emitWithState('911Intent');
+    },
     
     'Unhandled': function () {
         this.emit('LaunchRequest');
@@ -111,6 +117,10 @@ var mainStateHandlers = Alexa.CreateStateHandler(STATES.MAIN, {
     'InventoryIntent': function () {
         this.handler.state = STATES.INVENTORY;
         this.emitWithState('start');
+    },
+
+    '911Intent': function () {
+        this.emit(':tell', this.t('911'));
     },
 
     'HelpIntent': function () {
@@ -161,6 +171,11 @@ var urgentStateHandlers = Alexa.CreateStateHandler(STATES.URGENT, {
     'InventoryIntent': function () {
         this.handler.state = STATES.INVENTORY;
         this.emitWithState('start');
+    },
+
+    '911Intent': function () {
+        this.handler.state = STATES.MAIN;
+        this.emitWithState('911Intent');
     },
 
     'HelpIntent': function () {
@@ -236,6 +251,11 @@ var scheduleStateHandlers = Alexa.CreateStateHandler(STATES.SCHEDULE, {
         this.emitWithState('start');
     },
 
+    '911Intent': function () {
+        this.handler.state = STATES.MAIN;
+        this.emitWithState('911Intent');
+    },
+
     'HelpIntent': function () {
         this.emit(':ask', this.t('SCHEDULE_HELP'));
     },
@@ -281,6 +301,11 @@ var inventoryStateHandlers = Alexa.CreateStateHandler(STATES.INVENTORY, {
     'ScheduleIntent': function () {
         this.handler.state = STATES.SCHEDULE;
         this.emitWithState('start');
+    },
+
+    '911Intent': function () {
+        this.handler.state = STATES.MAIN;
+        this.emitWithState('911Intent');
     },
 
     'HelpIntent': function () {
