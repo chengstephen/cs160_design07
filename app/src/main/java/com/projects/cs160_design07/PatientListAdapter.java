@@ -33,7 +33,7 @@ public class PatientListAdapter extends ArrayAdapter<String> {
         ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
 
         textView.setText(patientItem);
-        imageView.setImageResource(R.drawable.grandmother);
+        imageView.setImageResource(R.drawable.grandma1);
 
         // for patient profile
         convertView.setOnClickListener(new View.OnClickListener() {

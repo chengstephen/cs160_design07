@@ -1,12 +1,16 @@
 package com.projects.cs160_design07;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class InventoryListAdapter extends ArrayAdapter<InventoryItem> {
@@ -17,8 +21,8 @@ public class InventoryListAdapter extends ArrayAdapter<InventoryItem> {
         super(context, resource, items);
         this.items = items;
     }
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    @Override @NonNull
+    public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.inventory_layout, parent, false);
@@ -37,6 +41,12 @@ public class InventoryListAdapter extends ArrayAdapter<InventoryItem> {
                 removeItem(items.get(position));
             }
         });
+
+//        Date current = items.get(position).getLastUpdateTime();
+//        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
+//        String currentDateTimeString = parent.getResources().getString(R.string.update_time_string)
+//                + " " + sdf.format(current);
+//        itemTime.setText(currentDateTimeString);
 
         return convertView;
     }

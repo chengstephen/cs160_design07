@@ -78,4 +78,8 @@ public class FeedListAdapter extends ArrayAdapter<Request> {
         notifyDataSetChanged();
     }
 
+    public boolean isRequestHere(Request request) {
+        return requests.contains(request);
+    }
+
 }
