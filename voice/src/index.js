@@ -8,7 +8,7 @@ var STATES = {
     MAIN: '_MAINMODE',
     URGENT: '_URGENTMODE',
     SCHEDULE: '_SCHEDULEMODE',
-    REQUEST: '_REQUESTMODE'
+    INVENTORY: '_INVENTORYMODE'
 };
 
 var time = new Date();
@@ -16,12 +16,11 @@ var time = new Date();
 var languageString = {
     'en': {
         'translation': {
-            'WELCOME': "nurse assistant here, i can help with urgent problems, scheduling, or any special requests. ",
+            'WELCOME': "nurse assistant here, i can help with urgent problems, scheduling, or inventory requests. ",
             'NEED_HELP': "what can i help you with today?",
             'MAIN_HELP': "to get help, you can say 'urgent problem', 'scheduling', or 'special request'",
 
-            'URGENT_PROMPT': "okay, what is your problem? if it's an emergency say, 'emergency'.",
-            'EMERGENCY_RESPONSE': "okay, medical staff have been notified and will be arriving immediately",
+            'URGENT_PROMPT': "okay, what is your problem?.",
             'READ_REQUEST': "okay, your request is, '%s'. the nurse will be here shortly",
             'URGENT_HELP': "for emergencies say 'emergency', for other urgent help, just tell me what you need. return to the main menu by saying, main menu.",
 
@@ -58,7 +57,7 @@ exports.handler = function (event, context) {
     var alexa = Alexa.handler(event, context);
     alexa.appId = APP_ID;
     alexa.resources = languageString;
-    alexa.registerHandlers(newSessionHandlers, mainStateHandlers, urgentStateHandlers, scheduleStateHandlers, requestStateHandlers);
+    alexa.registerHandlers(newSessionHandlers, mainStateHandlers, urgentStateHandlers, scheduleStateHandlers, inventoryStateHandlers);
     alexa.execute();
 
 };
@@ -79,9 +78,9 @@ var newSessionHandlers = {
         this.emitWithState('ScheduleIntent');
     },
 
-    'RequestIntent': function () {
+    'InventoryIntent': function () {
         this.handler.state = STATES.MAIN;
-        this.emitWithState('RequestIntent');
+        this.emitWithState('InventoryIntent');
     },
     
     'Unhandled': function () {
@@ -109,8 +108,8 @@ var mainStateHandlers = Alexa.CreateStateHandler(STATES.MAIN, {
         this.emitWithState('start');
     },
 
-    'RequestIntent': function () {
-        this.handler.state = STATES.REQUEST;
+    'InventoryIntent': function () {
+        this.handler.state = STATES.INVENTORY;
         this.emitWithState('start');
     },
 
@@ -145,12 +144,8 @@ var urgentStateHandlers = Alexa.CreateStateHandler(STATES.URGENT, {
                 that.emit(':tell', that.t('READ_REQUEST', newRequest));
             });
         } else {
-            this.emit(':ask', this.t('NO_PREVIOUS'));
+            this.emit(':ask', this.t('TRY_AGAIN'));
         }
-    },
-
-    'EmergencyIntent': function () {
-        this.emit(':tell', this.t('EMERGENCY_RESPONSE'));
     },
 
     'MainMenuIntent': function () {
@@ -163,8 +158,8 @@ var urgentStateHandlers = Alexa.CreateStateHandler(STATES.URGENT, {
         this.emitWithState('start');
     },
 
-    'RequestIntent': function () {
-        this.handler.state = STATES.REQUEST;
+    'InventoryIntent': function () {
+        this.handler.state = STATES.INVENTORY;
         this.emitWithState('start');
     },
 
@@ -236,8 +231,8 @@ var scheduleStateHandlers = Alexa.CreateStateHandler(STATES.SCHEDULE, {
         this.emitWithState('start');
     },
 
-    'RequestIntent': function () {
-        this.handler.state = STATES.REQUEST;
+    'InventoryIntent': function () {
+        this.handler.state = STATES.INVENTORY;
         this.emitWithState('start');
     },
 
@@ -256,14 +251,22 @@ var scheduleStateHandlers = Alexa.CreateStateHandler(STATES.SCHEDULE, {
 });
 
 
-var requestStateHandlers = Alexa.CreateStateHandler(STATES.REQUEST, {
+var inventoryStateHandlers = Alexa.CreateStateHandler(STATES.INVENTORY, {
     'start': function (newSession) {
         var speechOutput = '';
         speechOutput += this.t('REQUEST_PROMPT');
         this.emit(':ask', speechOutput);
     },
 
-
+    'NewRequestIntent': function () {
+        var newRequest = this.event.request.intent.slots.Request;
+        if (newRequest && newRequest.value) {
+            newRequest = newRequest.value.toLowerCase();
+            this.emit(':tell', this.t('READ_REQUEST', newRequest));
+        } else {
+            this.emit(':ask', this.t('TRY_AGAIN'));
+        }
+    },
 
     'MainMenuIntent': function () {
         this.handler.state = STATES.MAIN;
@@ -321,9 +324,5 @@ function postUrgentRequest(request, callback) {
 
     postReq.write(JSON.stringify(postData));
     postReq.end();
-}
-
-function sortByDateHelper(a, b) {
-    return a['date'] - b['date'];
 }
 
