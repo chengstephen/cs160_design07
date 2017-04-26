@@ -19,16 +19,7 @@
         android:layout_margin="5dp"
         android:layout_weight="5"
         android:padding="5dp"
-        android:text="
-    Amelie Mason
-    71 years old
-    Female
-    Caucasian
-
-    Notes
-    Has Dementia
-    Admitted to St. Johns March 15th
-    complaints chill and fever"
+        android:text="Name: Amelie Mason \n-71 years old\n-Female\n-Caucasian
+        \n\nNotes: \n-Has Dementia\n-Admitted to St. Johns March 15th\n-complaints chill and fever"
         android:textSize="18sp" />
-
 </LinearLayout>
