@@ -1,12 +1,17 @@
 NewRequestIntent i need {help using the bathroom|Request}
 NewRequestIntent i need {more water|Request}
-NewRequestIntent i need {more tissues|Request}
+NewRequestIntent i need {tissues|Request}
+NewRequestIntent i need {something|Request}
 NewRequestIntent can you {help me use the bathroom|Request}
 NewRequestIntent can you {get me more water|Request}
 NewRequestIntent can you {get more tissues|Request}
+NewRequestIntent can you {something|Request}
+NewRequestIntent i want {something|Request}
+NewRequestIntent can i have {something|Request}
 NewRequestIntent {help me use the bathroom|Request}
 NewRequestIntent {get me more water|Request}
 NewRequestIntent {get more tissues|Request}
+
 
 MainMenuIntent main menu
 MainMenuIntent menu
