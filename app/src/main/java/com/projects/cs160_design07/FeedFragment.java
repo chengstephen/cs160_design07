@@ -126,7 +126,17 @@ public class FeedFragment extends Fragment {
                 request = new Request();
                 request.setName("James Lee");
                 request.setMessage(((JSONObject)array.get(i)).get("Emergency").toString());
-                mockRequests.add(request);
+
+                boolean valid = true;
+                for (Request req : mockRequests) {
+                    if (req.getName().equals("James Lee") &
+                            req.getMessage().equals(request.getMessage())) {
+                        valid = false;
+                    }
+                }
+                if (valid) {
+                    mockRequests.add(request);
+                }
             }
         } catch(Exception e) {
             e.printStackTrace();
@@ -137,7 +147,16 @@ public class FeedFragment extends Fragment {
 
     public void addRequest(Request request) {
         if(!listAdapter.isRequestHere(request)) {
-            listAdapter.add(request);
+            boolean valid = true;
+            for (Request req : mockRequests) {
+                if (req.getName().equals("James Lee") &
+                        req.getMessage().equals(request.getMessage())) {
+                    valid = false;
+                }
+            }
+            if (valid) {
+                listAdapter.add(request);
+            }
         }
     }
 
