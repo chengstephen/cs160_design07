@@ -2,7 +2,7 @@ package com.projects.cs160_design07;
 
 // Homepage screen!  This activity will run our news feed and act as our app's homepage.
 
-import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,15 +10,34 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import com.amazonaws.auth.CognitoCachingCredentialsProvider;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.dynamodbv2.*;
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.*;
-import com.amazonaws.services.dynamodbv2.model.*;
-import android.widget.ListAdapter;
-import android.widget.ListView;
+
+import com.amazonaws.http.HttpClient;
+import com.amazonaws.http.HttpResponse;
+import com.amazonaws.util.IOUtils;
+
+import java.io.InputStream;
+import java.io.StringWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends AppCompatActivity {
+
+    private class HttpTask extends AsyncTask<String, Void, String> {
+        protected String doInBackground(String... urls) {
+            try {
+                URL url = new URL(urls[0]);
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                InputStream is = urlConnection.getInputStream();
+                String result = IOUtils.toString(is);
+                return result;
+            } catch(Exception e) {
+                e.printStackTrace();
+                return "";
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +46,16 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        String url = "https://a2owklu6i1.execute-api.us-east-1.amazonaws.com/prod/EmergenciesUpdate?TableName=Emergencies";
+        String result = "";
+        try {
+            result = new HttpTask().execute(url).get();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(result);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Feed"));
