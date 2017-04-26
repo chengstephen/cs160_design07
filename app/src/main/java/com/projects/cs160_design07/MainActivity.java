@@ -15,6 +15,8 @@ import com.amazonaws.http.HttpClient;
 import com.amazonaws.http.HttpResponse;
 import com.amazonaws.util.IOUtils;
 
+import org.json.JSONObject;
+
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.net.HttpURLConnection;
@@ -24,21 +26,6 @@ import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends AppCompatActivity {
 
-    private class HttpTask extends AsyncTask<String, Void, String> {
-        protected String doInBackground(String... urls) {
-            try {
-                URL url = new URL(urls[0]);
-                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                InputStream is = urlConnection.getInputStream();
-                String result = IOUtils.toString(is);
-                return result;
-            } catch(Exception e) {
-                e.printStackTrace();
-                return "";
-            }
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,16 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        String url = "https://a2owklu6i1.execute-api.us-east-1.amazonaws.com/prod/EmergenciesUpdate?TableName=Emergencies";
-        String result = "";
-        try {
-            result = new HttpTask().execute(url).get();
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-
-        System.out.println(result);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Feed"));
