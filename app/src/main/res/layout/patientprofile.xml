@@ -16,10 +16,19 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:layout_weight="5"
+        android:padding="5dp"
         android:text="
-        71 years old
-        Female
-        Caucasian
-        Admitted to St. Johns March 15th with complaints of generalized weakness, chill and fever" />
+    Amelie Mason
+    71 years old
+    Female
+    Caucasian
+
+    Notes
+    Has Dementia
+    Admitted to St. Johns March 15th
+    complaints chill and fever"
+        android:textSize="18sp" />
 
 </LinearLayout>
