@@ -8,6 +8,8 @@
   {"intent": "EmergencyIntent"},
   {"intent": "NextIntent"},
   {"intent": "PreviousIntent"},
-  {"intent": "StartOverIntent"}
+  {"intent": "StartOverIntent"},
+  {"intent": "ExitIntent"},
+  {"intent": "911Intent"}
 ]
 }

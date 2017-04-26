@@ -1,25 +1,32 @@
 NewRequestIntent i need {help using the bathroom|Request}
 NewRequestIntent i need {more water|Request}
+NewRequestIntent i need {more tissues|Request}
 NewRequestIntent can you {help me use the bathroom|Request}
 NewRequestIntent can you {get me more water|Request}
+NewRequestIntent can you {get more tissues|Request}
 NewRequestIntent {help me use the bathroom|Request}
 NewRequestIntent {get me more water|Request}
+NewRequestIntent {get more tissues|Request}
 
 MainMenuIntent main menu
 MainMenuIntent menu
 
-UrgentIntent
+UrgentIntent urgent
 
-ScheduleIntent
+ScheduleIntent scheduling
 
-RequestIntent
+RequestIntent inventory
 
-HelpIntent
+HelpIntent help
 
-EmergencyIntent
+EmergencyIntent emergency
 
-NextIntent
+NextIntent next
 
-PreviousIntent
+PreviousIntent last
+PreviousIntent previous
 
-StartOverIntent
+StartOverIntent start over
+
+911Intent call 911
+911Intent 911
