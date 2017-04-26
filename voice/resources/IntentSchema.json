@@ -3,13 +3,12 @@
   {"intent": "MainMenuIntent"},
   {"intent": "UrgentIntent"},
   {"intent": "ScheduleIntent"},
-  {"intent": "RequestIntent"},
+  {"intent": "InventoryIntent"},
   {"intent": "HelpIntent"},
   {"intent": "EmergencyIntent"},
   {"intent": "NextIntent"},
   {"intent": "PreviousIntent"},
   {"intent": "StartOverIntent"},
-  {"intent": "ExitIntent"},
-  {"intent": "911Intent"}
+  {"intent": "ExitIntent"}
 ]
 }

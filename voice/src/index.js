@@ -18,11 +18,11 @@ var languageString = {
         'translation': {
             'WELCOME': "nurse assistant here, i can help with urgent problems, scheduling, or inventory requests. ",
             'NEED_HELP': "what can i help you with today?",
-            'MAIN_HELP': "to get help, you can say 'urgent problem', 'scheduling', or 'special request'",
+            'MAIN_HELP': "to get help, you can say 'urgent problem', 'scheduling', or 'inventory request'",
             '911': "emergency care is on the way, please remain calm",
 
-            'URGENT_PROMPT': "okay, what is your problem?.",
-            'READ_REQUEST': "okay, your request is, '%s'. the nurse will be here shortly",
+            'URGENT_PROMPT': "okay, what is your problem?",
+            'READ_URGENT_REQUEST': "okay, your request is, '%s'. the nurse will be here shortly",
             'URGENT_HELP': "for emergencies say 'emergency', for other urgent help, just tell me what you need. return to the main menu by saying, main menu.",
 
             'SCHEDULE_PROMPT': "to hear the next item on your schedule, say next",
@@ -45,7 +45,10 @@ var languageString = {
             'NO_PREVIOUS': "there's no previous item, please say next to hear the next item on your schedule.",
             'SCHEDULE_HELP': "to hear the next item on your schedule, say next. return to the main menu by saying, main menu.",
 
-            'REQUEST_HELP': "return to the main menu by saying, main menu.",
+            'INVENTORY_PROMPT': "okay, what do you need?",
+            'READ_INVENTORY_REQUEST': "okay, your request is, '%s'. the nurse will update you soon about the status of your request",
+            'INVENTORY_HELP': "return to the main menu by saying, main menu.",
+
 
             'TRY_AGAIN': "i didn't quite catch that, could you repeat it?",
             'GOODBYE': "see you next time"
@@ -84,9 +87,9 @@ var newSessionHandlers = {
         this.emitWithState('InventoryIntent');
     },
 
-    '911Intent': function () {
+    'EmergencyIntent': function () {
         this.handler.state = STATES.MAIN;
-        this.emitWithState('911Intent');
+        this.emitWithState('EmergencyIntent');
     },
     
     'Unhandled': function () {
@@ -119,7 +122,7 @@ var mainStateHandlers = Alexa.CreateStateHandler(STATES.MAIN, {
         this.emitWithState('start');
     },
 
-    '911Intent': function () {
+    'EmergencyIntent': function () {
         this.emit(':tell', this.t('911'));
     },
 
@@ -139,8 +142,7 @@ var mainStateHandlers = Alexa.CreateStateHandler(STATES.MAIN, {
 
 var urgentStateHandlers = Alexa.CreateStateHandler(STATES.URGENT, {
     'start': function (newSession) {
-        var speechOutput = '';
-        speechOutput += this.t('URGENT_PROMPT');
+        var speechOutput = this.t('URGENT_PROMPT');
         this.emit(':ask', speechOutput);
     },
 
@@ -151,7 +153,7 @@ var urgentStateHandlers = Alexa.CreateStateHandler(STATES.URGENT, {
             var that = this;
             postUrgentRequest(newRequest, function() {
                 console.log('sentinel');
-                that.emit(':tell', that.t('READ_REQUEST', newRequest));
+                that.emit(':tell', that.t('READ_URGENT_REQUEST', newRequest));
             });
         } else {
             this.emit(':ask', this.t('TRY_AGAIN'));
@@ -163,19 +165,9 @@ var urgentStateHandlers = Alexa.CreateStateHandler(STATES.URGENT, {
         this.emitWithState('start', false);
     },
 
-    'ScheduleIntent': function () {
-        this.handler.state = STATES.SCHEDULE;
-        this.emitWithState('start');
-    },
-
-    'InventoryIntent': function () {
-        this.handler.state = STATES.INVENTORY;
-        this.emitWithState('start');
-    },
-
-    '911Intent': function () {
+    'EmergencyIntent': function () {
         this.handler.state = STATES.MAIN;
-        this.emitWithState('911Intent');
+        this.emitWithState('EmergencyIntent');
     },
 
     'HelpIntent': function () {
@@ -195,8 +187,7 @@ var urgentStateHandlers = Alexa.CreateStateHandler(STATES.URGENT, {
 var scheduleStateHandlers = Alexa.CreateStateHandler(STATES.SCHEDULE, {
     'start': function (newSession) {
         this.attributes['scheduleCount'] = -1;
-        var speechOutput = '';
-        speechOutput += this.t('SCHEDULE_PROMPT');
+        var speechOutput = this.t('SCHEDULE_PROMPT');
         this.emit(':ask', speechOutput);
     },
 
@@ -241,19 +232,9 @@ var scheduleStateHandlers = Alexa.CreateStateHandler(STATES.SCHEDULE, {
         this.emitWithState('start', false);
     },
 
-    'UrgentIntent': function () {
-        this.handler.state = STATES.URGENT;
-        this.emitWithState('start');
-    },
-
-    'InventoryIntent': function () {
-        this.handler.state = STATES.INVENTORY;
-        this.emitWithState('start');
-    },
-
-    '911Intent': function () {
+    'EmergencyIntent': function () {
         this.handler.state = STATES.MAIN;
-        this.emitWithState('911Intent');
+        this.emitWithState('EmergencyIntent');
     },
 
     'HelpIntent': function () {
@@ -272,9 +253,8 @@ var scheduleStateHandlers = Alexa.CreateStateHandler(STATES.SCHEDULE, {
 
 
 var inventoryStateHandlers = Alexa.CreateStateHandler(STATES.INVENTORY, {
-    'start': function (newSession) {
-        var speechOutput = '';
-        speechOutput += this.t('REQUEST_PROMPT');
+    'start': function () {
+        var speechOutput = this.t('INVENTORY_PROMPT');
         this.emit(':ask', speechOutput);
     },
 
@@ -282,7 +262,7 @@ var inventoryStateHandlers = Alexa.CreateStateHandler(STATES.INVENTORY, {
         var newRequest = this.event.request.intent.slots.Request;
         if (newRequest && newRequest.value) {
             newRequest = newRequest.value.toLowerCase();
-            this.emit(':tell', this.t('READ_REQUEST', newRequest));
+            this.emit(':tell', this.t('READ_INVENTORY_REQUEST', newRequest));
         } else {
             this.emit(':ask', this.t('TRY_AGAIN'));
         }
@@ -293,23 +273,13 @@ var inventoryStateHandlers = Alexa.CreateStateHandler(STATES.INVENTORY, {
         this.emitWithState('start', false);
     },
 
-    'UrgentIntent': function () {
-        this.handler.state = STATES.URGENT;
-        this.emitWithState('start');
-    },
-
-    'ScheduleIntent': function () {
-        this.handler.state = STATES.SCHEDULE;
-        this.emitWithState('start');
-    },
-
-    '911Intent': function () {
+    'EmergencyIntent': function () {
         this.handler.state = STATES.MAIN;
-        this.emitWithState('911Intent');
+        this.emitWithState('EmergencyIntent');
     },
 
     'HelpIntent': function () {
-        this.emit(':ask', this.t('REQUEST_HELP'));
+        this.emit(':ask', this.t('INVENTORY_HELP'));
     },
 
     'ExitIntent': function () {

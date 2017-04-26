@@ -12,14 +12,18 @@ MainMenuIntent main menu
 MainMenuIntent menu
 
 UrgentIntent urgent
+UrgentIntent urgent help
+UrgentIntent i need urgent help
 
 ScheduleIntent scheduling
 
-RequestIntent inventory
+InventoryIntent inventory
+InventoryIntent update inventory
+InventoryIntent new inventory
+InventoryIntent i have an inventory request
+InventoryIntent inventory request
 
 HelpIntent help
-
-EmergencyIntent emergency
 
 NextIntent next
 
@@ -28,5 +32,5 @@ PreviousIntent previous
 
 StartOverIntent start over
 
-911Intent call 911
-911Intent 911
+EmergencyIntent call nine one one
+EmergencyIntent nine one one
