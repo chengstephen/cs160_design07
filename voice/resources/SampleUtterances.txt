@@ -8,18 +8,19 @@ NewRequestIntent {get me more water|Request}
 MainMenuIntent main menu
 MainMenuIntent menu
 
-UrgentIntent
+UrgentIntent urgent
 
-ScheduleIntent
+ScheduleIntent scheduling
 
-RequestIntent
+RequestIntent inventory
 
-HelpIntent
+HelpIntent help
 
-EmergencyIntent
+EmergencyIntent emergency
 
-NextIntent
+NextIntent next
 
-PreviousIntent
+PreviousIntent last
+PreviousIntent previous
 
-StartOverIntent
+StartOverIntent start over
