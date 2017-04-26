@@ -16,21 +16,37 @@ UrgentIntent urgent help
 UrgentIntent i need urgent help
 
 ScheduleIntent scheduling
+ScheduleIntent help with scheduling
+ScheduleIntent show me my schedule
+ScheduleIntent i'd like to hear my schedule
+ScheduleIntent i'd like to hear my schedule for today
 
 InventoryIntent inventory
 InventoryIntent update inventory
 InventoryIntent new inventory
 InventoryIntent i have an inventory request
 InventoryIntent inventory request
+InventoryIntent i have an inventory request
+InventoryIntent inventory request
 
 HelpIntent help
+HelpIntent what can i say
 
 NextIntent next
+NextIntent next appointment
 
 PreviousIntent last
+PreviousIntent last item
+PreviousIntent last appointment
 PreviousIntent previous
+PreviousIntent previous item
+PreviousIntent previous appointment
 
 StartOverIntent start over
+StartOverIntent restart
 
 EmergencyIntent call nine one one
 EmergencyIntent nine one one
+
+ExitIntent exit
+ExitIntent quit
