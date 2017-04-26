@@ -2,7 +2,7 @@ package com.projects.cs160_design07;
 
 // Homepage screen!  This activity will run our news feed and act as our app's homepage.
 
-import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,8 +10,19 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListAdapter;
-import android.widget.ListView;
+
+import com.amazonaws.http.HttpClient;
+import com.amazonaws.http.HttpResponse;
+import com.amazonaws.util.IOUtils;
+
+import org.json.JSONObject;
+
+import java.io.InputStream;
+import java.io.StringWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends AppCompatActivity {
 

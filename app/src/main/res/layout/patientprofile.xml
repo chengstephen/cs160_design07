@@ -7,19 +7,19 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:contentDescription=""
-        android:src="@drawable/grandmother" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"></LinearLayout>
+        android:src="@drawable/grandma1" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:layout_weight="5"
+        android:padding="5dp"
+        android:text="Name: Amelie Mason \n-71 years old\n-Female\n-Caucasian
+        \n\nNotes: \n-Has Dementia\n-Admitted to St. Johns March 15th\n-complaints chill and fever"
+        android:textSize="18sp" />
 </LinearLayout>

@@ -15,12 +15,17 @@ import java.util.ArrayList;
  */
 
 public class InventoryFragment extends Fragment {
+
+    private View rootView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.feed_fragment_layout, container, false);
-        ArrayList<InventoryItem> mockInventory = getMockInventory();
-        ListView listView = (ListView) rootView.findViewById(R.id.feed_list_view);
-        listView.setAdapter(new InventoryListAdapter(getActivity(), R.layout.inventory_layout, mockInventory));
+        if(rootView == null) {
+            rootView = inflater.inflate(R.layout.feed_fragment_layout, container, false);
+            ArrayList<InventoryItem> mockInventory = getMockInventory();
+            ListView listView = (ListView) rootView.findViewById(R.id.feed_list_view);
+            listView.setAdapter(new InventoryListAdapter(getActivity(), R.layout.inventory_layout, mockInventory));
+        }
         return rootView;
     }
 

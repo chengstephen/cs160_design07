@@ -2,6 +2,7 @@ package com.projects.cs160_design07;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,20 +22,21 @@ public class PatientListAdapter extends ArrayAdapter<String> {
         super(context, R.layout.custom_row, patients);
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = LayoutInflater.from(getContext());
-        View customView = inflater.inflate(R.layout.custom_row, parent, false);
-
+    @Override @NonNull
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+        if(convertView == null) {
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            convertView = inflater.inflate(R.layout.custom_row, parent, false);
+        }
         String patientItem = getItem(position);
-        TextView textView = (TextView) customView.findViewById(R.id.textView);
-        ImageView imageView = (ImageView) customView.findViewById(R.id.imageView);
+        TextView textView = (TextView) convertView.findViewById(R.id.textView);
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
 
         textView.setText(patientItem);
-        imageView.setImageResource(R.drawable.grandmother);
+        imageView.setImageResource(R.drawable.grandma1);
 
         // for patient profile
-        textView.setOnClickListener(new View.OnClickListener() {
+        convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(),PatientProfileActivity.class);
@@ -42,6 +44,6 @@ public class PatientListAdapter extends ArrayAdapter<String> {
             }
         });
 
-        return customView;
+        return convertView;
     }
 }

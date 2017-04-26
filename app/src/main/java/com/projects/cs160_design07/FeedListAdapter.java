@@ -1,6 +1,7 @@
 package com.projects.cs160_design07;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,8 +29,8 @@ public class FeedListAdapter extends ArrayAdapter<Request> {
         super(context, resource, requests);
         this.requests = requests;
     }
-    @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    @Override @NonNull
+    public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.request_layout, parent, false);
@@ -75,6 +76,10 @@ public class FeedListAdapter extends ArrayAdapter<Request> {
     public void removeRequest(Request request) {
         requests.remove(request);
         notifyDataSetChanged();
+    }
+
+    public boolean isRequestHere(Request request) {
+        return requests.contains(request);
     }
 
 }
