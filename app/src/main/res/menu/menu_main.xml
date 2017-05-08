@@ -11,4 +11,6 @@
         android:title="@string/menu_emergency_contacts"/>
     <item android:id="@+id/settings"
         android:title="@string/menu_settings"/>
+    <item android:id="@+id/request_history"
+        android:title="@string/menu_request_history"/>
 </menu>

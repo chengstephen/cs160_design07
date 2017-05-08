@@ -2,7 +2,7 @@ package com.projects.cs160_design07;
 
 // Homepage screen!  This activity will run our news feed and act as our app's homepage.
 
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -11,25 +11,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.amazonaws.http.HttpClient;
-import com.amazonaws.http.HttpResponse;
-import com.amazonaws.util.IOUtils;
-
-import org.json.JSONObject;
-
-import java.io.InputStream;
-import java.io.StringWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static ArrayList<Request> finishedRequests;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        finishedRequests = new ArrayList<>();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -76,8 +69,14 @@ public class MainActivity extends AppCompatActivity {
             //Popup to call emergency
             EmergencyDialog eDialog = new EmergencyDialog(this);
             eDialog.show();
+        } else if (id == R.id.request_history) {
+            startActivity(new Intent(MainActivity.this, RequestHistoryActivity.class));
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public static ArrayList<Request> getFinishedRequests() {
+        return finishedRequests;
     }
 }

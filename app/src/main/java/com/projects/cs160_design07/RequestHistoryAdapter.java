@@ -12,34 +12,31 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
- * Created by cstep on 4/19/2017.
+ * Created by cstep on 5/7/2017.
  */
 
-public class FeedListAdapter extends ArrayAdapter<Request> {
+public class RequestHistoryAdapter extends ArrayAdapter<Request>{
 
     private List<Request> requests;
 
-    public FeedListAdapter(Context context, int resource, List<Request> requests) {
+    public RequestHistoryAdapter(Context context, int resource, List<Request> requests) {
         super(context, resource, requests);
         this.requests = requests;
     }
-    @Override @NonNull
+
     public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.request_layout, parent, false);
+            convertView = inflater.inflate(R.layout.request_history_item, parent, false);
         }
         ImageView requestImage = (ImageView) convertView.findViewById(R.id.request_image);
         TextView requestName = (TextView) convertView.findViewById(R.id.request_name);
         TextView requestMessage = (TextView) convertView.findViewById(R.id.request_description);
         TextView requestCurrentTime = (TextView) convertView.findViewById(R.id.request_current_time);
-        Button doneRequest = (Button) convertView.findViewById(R.id.request_reminder_button);
 
         if (requests.get(position) instanceof EmergencyRequest) {
             requestImage.setImageResource(R.mipmap.ic_emergency);
@@ -58,30 +55,6 @@ public class FeedListAdapter extends ArrayAdapter<Request> {
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
         String currentDateTimeString = sdf.format(current);
         requestCurrentTime.setText(currentDateTimeString);
-        doneRequest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                removeRequest(requests.get(position));
-            }
-        });
-
         return convertView;
     }
-
-    public void addRequest(Request request) {
-        requests.add(request);
-        notifyDataSetChanged();
-    }
-
-    public void removeRequest(Request request) {
-        MainActivity.getFinishedRequests().add(request);
-        System.out.println(MainActivity.getFinishedRequests().size());
-        requests.remove(request);
-        notifyDataSetChanged();
-    }
-
-    public boolean isRequestHere(Request request) {
-        return requests.contains(request);
-    }
-
 }

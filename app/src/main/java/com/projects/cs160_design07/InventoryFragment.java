@@ -2,6 +2,7 @@ package com.projects.cs160_design07;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,9 +22,9 @@ public class InventoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if(rootView == null) {
-            rootView = inflater.inflate(R.layout.feed_fragment_layout, container, false);
+            rootView = inflater.inflate(R.layout.inventory_fragment_layout, container, false);
             ArrayList<InventoryItem> mockInventory = getMockInventory();
-            ListView listView = (ListView) rootView.findViewById(R.id.feed_list_view);
+            ListView listView = (ListView) rootView.findViewById(R.id.inventory_list_view);
             listView.setAdapter(new InventoryListAdapter(getActivity(), R.layout.inventory_layout, mockInventory));
         }
         return rootView;
