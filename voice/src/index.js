@@ -19,7 +19,7 @@ var languageString = {
             'WELCOME': "nurse assistant here, i can help with urgent problems, scheduling, or inventory requests. ",
             'NEED_HELP': "what can i help you with today?",
             'MAIN_HELP': "to get help, you can say 'urgent problem', 'scheduling', or 'inventory request'",
-            '911': "emergency care is on the way, please remain calm",
+            '911': "emergency care is on the way",
 
             'URGENT_PROMPT': "okay, what is your problem?",
             'READ_URGENT_REQUEST': "okay, your request is, '%s'. the nurse will be here shortly",
@@ -47,7 +47,7 @@ var languageString = {
 
             'INVENTORY_PROMPT': "okay, what do you need?",
             'READ_INVENTORY_REQUEST': "okay, your request is, '%s'. the nurse will update you soon about the status of your request",
-            'INVENTORY_HELP': "return to the main menu by saying, main menu.",
+            'INVENTORY_HELP': "make an inventory request by saying 'i need an item'. return to the main menu by saying, main menu.",
 
 
             'TRY_AGAIN': "i didn't quite catch that, could you repeat it?",
@@ -152,7 +152,6 @@ var urgentStateHandlers = Alexa.CreateStateHandler(STATES.URGENT, {
             newRequest = newRequest.value.toLowerCase();
             var that = this;
             postUrgentRequest(newRequest, function() {
-                console.log('sentinel');
                 that.emit(':tell', that.t('READ_URGENT_REQUEST', newRequest));
             });
         } else {
