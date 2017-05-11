@@ -25,7 +25,6 @@ import java.util.ArrayList;
 
 public class FeedFragment extends Fragment {
 
-    private ListView listView;
     private SwipeRefreshLayout layout;
     private FeedListAdapter listAdapter;
     private ArrayList<Request> mockRequests;
@@ -37,8 +36,7 @@ public class FeedFragment extends Fragment {
                 URL url = new URL(urls[0]);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 InputStream is = urlConnection.getInputStream();
-                String result = IOUtils.toString(is);
-                return result;
+                return IOUtils.toString(is);
             } catch(Exception e) {
                 e.printStackTrace();
                 return "";
@@ -83,7 +81,7 @@ public class FeedFragment extends Fragment {
                     }
                 }
             });
-            listView = (ListView) rootView.findViewById(R.id.feed_list_view);
+            ListView listView = (ListView) rootView.findViewById(R.id.feed_list_view);
             listAdapter = new FeedListAdapter(getActivity(), R.layout.request_layout, mockRequests);
             listView.setAdapter(listAdapter);
         }

@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PatientProfileActivity"></activity>
+        <activity android:name=".PatientProfileActivity"/>
+        <activity android:name=".RequestHistoryActivity"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

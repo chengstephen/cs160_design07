@@ -41,19 +41,7 @@ public class InventoryListAdapter extends ArrayAdapter<InventoryItem> {
                 removeItem(items.get(position));
             }
         });
-
-//        Date current = items.get(position).getLastUpdateTime();
-//        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
-//        String currentDateTimeString = parent.getResources().getString(R.string.update_time_string)
-//                + " " + sdf.format(current);
-//        itemTime.setText(currentDateTimeString);
-
         return convertView;
-    }
-
-    public void addItem(InventoryItem item) {
-        items.add(item);
-        notifyDataSetChanged();
     }
 
     public void removeItem(InventoryItem item) {
