@@ -7,10 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class InventoryListAdapter extends ArrayAdapter<InventoryItem> {
@@ -30,23 +29,27 @@ public class InventoryListAdapter extends ArrayAdapter<InventoryItem> {
         TextView itemName = (TextView) convertView.findViewById(R.id.item_name);
         TextView itemNum = (TextView) convertView.findViewById(R.id.item_num);
         TextView itemTime = (TextView) convertView.findViewById(R.id.item_update_time);
-        Button delItem = (Button) convertView.findViewById(R.id.item_delete_button);
+        ImageButton addButton = (ImageButton) convertView.findViewById(R.id.add_button);
+        ImageButton subtractButton = (ImageButton) convertView.findViewById(R.id.subtract_button);
 
         itemName.setText(items.get(position).getName());
         itemNum.setText(items.get(position).getNumUnits());
         itemTime.setText(items.get(position).getLastUpdateTime().toString());
-        delItem.setOnClickListener(new View.OnClickListener() {
+        addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                removeItem(items.get(position));
+                items.get(position).addNum();
+                notifyDataSetChanged();
+            }
+        });
+        subtractButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                items.get(position).subtractNum();
+                notifyDataSetChanged();
             }
         });
         return convertView;
-    }
-
-    public void removeItem(InventoryItem item) {
-        items.remove(item);
-        notifyDataSetChanged();
     }
 
 }

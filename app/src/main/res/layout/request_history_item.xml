@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/top_padding"
+        android:paddingBottom="@dimen/top_padding"
         android:orientation="horizontal" >
 
         <ImageView

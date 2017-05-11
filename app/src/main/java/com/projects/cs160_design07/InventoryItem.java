@@ -30,6 +30,14 @@ public class InventoryItem extends AppCompatActivity {
         lastUpdateTime = Calendar.getInstance().getTime();
     }
 
+    public void addNum() {
+        numLeft++;
+    }
+
+    public void subtractNum() {
+        numLeft--;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
