@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="vertical">
+    android:layout_height="match_parent">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -18,155 +17,160 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         tools:ignore="UnusedAttribute" />
 
-    <android.support.design.widget.AppBarLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <RelativeLayout
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|enterAlways">
+            android:scrollbars="vertical">
 
-            <ImageView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:src="@drawable/helpinghand"
-                android:scaleType="centerCrop"/>
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                app:layout_scrollFlags="scroll|enterAlways">
 
-            <android.support.v7.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:src="@drawable/helpinghand"
+                    android:scaleType="centerCrop"/>
+
+                <android.support.v7.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:padding="16dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/grandma1"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Amelie Mason"
+                        android:layout_margin="5dp"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@android:color/background_dark" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="85 Years Old"
+                        android:layout_margin="5dp"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@android:color/background_dark" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_pin_drop_black_24dp"
+                            android:tint="@android:color/background_dark" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Burbank, California, USA"
+                            android:layout_margin="5dp"
+                            android:textSize="15sp"
+                            android:layout_marginTop="8dp"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/background_dark" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:padding="16dp"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="#455A64"
+                android:gravity="center">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/grandma1"
-                    app:civ_border_width="4dp" />
-
-                <TextView
+                <GridLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Amelie Mason"
-                    android:layout_margin="5dp"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:layout_marginTop="8dp"
-                    android:textColor="@android:color/background_dark" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="85 Years Old"
-                    android:layout_margin="5dp"
-                    android:textStyle="bold"
-                    android:textSize="15sp"
-                    android:layout_marginTop="8dp"
-                    android:textColor="@android:color/background_dark" />
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_pin_drop_black_24dp"
-                        android:tint="@android:color/background_dark" />
+                    android:columnCount="3"
+                    android:rowCount="2">
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Burbank, California, USA"
-                        android:layout_margin="5dp"
-                        android:textSize="15sp"
-                        android:layout_marginTop="8dp"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/background_dark" />
-                </LinearLayout>
+                        android:text=""/>
+                </GridLayout>
+
             </LinearLayout>
 
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#455A64"
-            android:gravity="center">
-
-            <GridLayout
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:columnCount="3"
-                android:rowCount="2">
+                android:orientation="vertical"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:background="#EEEEEE"
+                android:padding="16dp">
+
                 <TextView
-                    android:text=""/>
-            </GridLayout>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Notes"
+                    android:textSize="24sp"
+                    android:textStyle="bold"/>
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/background_dark"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_scrollFlags="scroll|enterAlways"
-            android:background="#EEEEEE"
-            android:padding="16dp">
-            <TextView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="20sp"
+                    android:text="Diagnosis: Dementia, Diabetes\nAdmitted to St. Johns March 15th complaints chill and fever." />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Notes"
-                android:textSize="24sp"
-                android:textStyle="bold"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/background_dark"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textSize="20sp"
-                android:text="Diagnosis: Dementia, Diabetes\nAdmitted to St. Johns March 15th complaints chill and fever." />
+                android:padding="16dp"
+                android:orientation="vertical">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="24dp"
+                    android:text="Logs"/>
 
-    </android.support.design.widget.AppBarLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textSize="18dp"
+                    android:text="3/20/17 Was having fever, temperature 100.2 \n 04/1/17 Chills, irritable and had some rashes on her skin \n 04/9/17 Brought to the hospital because of high fever" />
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:orientation="vertical">
+        </android.support.design.widget.AppBarLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="24dp"
-                android:text="Logs"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="normal"
-                android:textSize="18dp"
-                android:text="3/20/17 Was having fever, temperature 100.2 \n 04/1/17 Chills, irritable and had some rashes on her skin \n 04/9/17 Brought to the hospital because of high fever"/>
-
-" />
-
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </ScrollView>
 
 </android.support.design.widget.CoordinatorLayout>
