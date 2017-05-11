@@ -1,19 +1,27 @@
-NewRequestIntent i need {help using the bathroom|Request}
 NewRequestIntent i need {more water|Request}
 NewRequestIntent i need {tissues|Request}
 NewRequestIntent i need {something|Request}
+NewRequestIntent i need {food|Request}
 NewRequestIntent i need to {get up|Request}
-NewRequestIntent i need to {something|Request}
+NewRequestIntent i need to {walk|Request}
+NewRequestIntent i need help {using the bathroom|Request}
+NewRequestIntent i need help {reading|Request}
 NewRequestIntent can you {help me use the bathroom|Request}
-NewRequestIntent can you {get me more water|Request}
-NewRequestIntent can you {get more tissues|Request}
-NewRequestIntent can you {something|Request}
+NewRequestIntent can you {get more water|Request}
+NewRequestIntent can you {get food|Request}
+NewRequestIntent can you {find some food|Request}
 NewRequestIntent i want {something|Request}
+NewRequestIntent i want {tissues|Request}
+NewRequestIntent i want {food|Request}
 NewRequestIntent can i have {something|Request}
-NewRequestIntent {help me use the bathroom|Request}
-NewRequestIntent {get me more water|Request}
-NewRequestIntent {get more tissues|Request}
-
+NewRequestIntent can i have {a toothbrush|Request}
+NewRequestIntent can i have {food|Request}
+NewRequestIntent help me {use the bathroom|Request}
+NewRequestIntent help me {eat|Request}
+NewRequestIntent {use the bathroom|Request}
+NewRequestIntent {more water|Request}
+NewRequestIntent {tissues|Request}
+NewRequestIntent {a toothbrush|Request}
 
 MainMenuIntent main menu
 MainMenuIntent menu
@@ -25,6 +33,7 @@ UrgentIntent i need urgent help
 ScheduleIntent scheduling
 ScheduleIntent help with scheduling
 ScheduleIntent show me my schedule
+ScheduleIntent what's my schedule
 ScheduleIntent i'd like to hear my schedule
 ScheduleIntent i'd like to hear my schedule for today
 
@@ -33,8 +42,9 @@ InventoryIntent update inventory
 InventoryIntent new inventory
 InventoryIntent i have an inventory request
 InventoryIntent inventory request
-InventoryIntent i have an inventory request
-InventoryIntent inventory request
+InventoryIntent items
+InventoryIntent an item
+InventoryIntent stuff
 
 HelpIntent help
 HelpIntent what can i say

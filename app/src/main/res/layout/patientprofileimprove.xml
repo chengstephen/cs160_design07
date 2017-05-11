@@ -134,6 +134,7 @@
                 android:layout_marginTop="8dp"
                 android:textSize="20sp"
                 android:text="Diagnosis: Dementia, Diabetes\nAdmitted to St. Johns March 15th complaints chill and fever." />
+
         </LinearLayout>
 
     </android.support.design.widget.AppBarLayout>
@@ -152,7 +153,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is " />
+                android:textStyle="bold"
+                android:textSize="24dp"
+                android:text="Logs"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="18dp"
+                android:text="3/20/17 Was having fever, temperature 100.2 \n 04/1/17 Chills, irritable and had some rashes on her skin \n 04/9/17 Brought to the hospital because of high fever"/>
+
+" />
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
